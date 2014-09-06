@@ -3,6 +3,7 @@ This project is being used to deploy a test webapp on AWS.
 #### Windows Instance Setup
 
 ```posh
+<powershell>
 # Install IIS
 Install-WindowsFeature as-web-support -IncludeManagementTools
 
@@ -24,4 +25,5 @@ Remove-Item c:\tmp\*
 # Update default website config
 Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name PhysicalPath -Value C:\ImageGallery
 Restart-WebItem 'IIS:\Sites\Default Web Site'
+</powershell>
 ```
