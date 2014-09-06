@@ -10,5 +10,5 @@ Install-WindowsFeature as-web-support -IncludeManagementTools
 
 create `c:\ImageGallery`
 ```posh
-New-Item -Type Directory c:\ImageGallery
+New-Item -Type Directory 'c:\ImageGallery'
 ```
