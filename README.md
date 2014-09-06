@@ -7,3 +7,8 @@ install application-server
 ```posh
 Install-WindowsFeature as-web-support -IncludeManagementTools
 ```
+
+create `c:\ImageGallery`
+```posh
+New-Item -Type Directory c:\ImageGallery
+```
