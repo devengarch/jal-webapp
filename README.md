@@ -8,7 +8,10 @@ install application-server
 Install-WindowsFeature as-web-support -IncludeManagementTools
 ```
 
-create `c:\ImageGallery`
+download code from s3
 ```posh
+Import-Module AWSPowerShell
+New-Item -Type Directory 'c:\tmp'
 New-Item -Type Directory 'c:\ImageGallery'
+Read-S3Object -BucketName jalwebapp -Key code/jal-webapp-master.zip -File c:\tmp\code/jal-webapp-master.zip
 ```
