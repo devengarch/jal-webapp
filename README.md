@@ -24,7 +24,9 @@ Remove-Item c:\tmp\*
 
 # Update default website config
 Import-Module WebAdministration
-Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name PhysicalPath -Value C:\ImageGallery
-Restart-WebItem 'IIS:\Sites\Default Web Site'
+if(Get-Website 'Default Web Site'){Remove-Website 'Default Web Site'}
+if(Get-WebAppPool 'DefaultAppPool'){Remove-WebAppPool DefaultAppPool}
+$WebSiteName = 'ImageGallery'
+New-Website -Name $WebSiteName -ApplicationPool (New-WebAppPool $WebSiteName).Name -PhysicalPath C:\ImageGallery
 </powershell>
 ```
