@@ -5,5 +5,5 @@ This project is being used to deploy a test webapp on AWS.
 install application-server
 
 ```posh
-Install-WindowsFeature application-server -IncludeManagementTools
+Install-WindowsFeature as-web-support -IncludeManagementTools
 ```
