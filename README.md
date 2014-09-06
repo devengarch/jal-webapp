@@ -26,3 +26,9 @@ if(Test-Path c:\ImageGallery){Remove-Item C:\ImageGallery -Recurse -Force}
 Move-Item C:\tmp\jal-webapp-master\ C:\ImageGallery\
 Remove-Item c:\tmp\*
 ```
+
+set website to use correct directory.
+```posh
+Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name PhysicalPath -Value C:\ImageGallery
+Restart-WebItem 'IIS:\Sites\Default Web Site'
+```
