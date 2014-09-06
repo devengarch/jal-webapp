@@ -1,12 +1,12 @@
 /*******************************************************************************
 * Copyright 2009-2011 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-* 
+*
 * Licensed under the Apache License, Version 2.0 (the "License"). You may
 * not use this file except in compliance with the License. A copy of the
 * License is located at
-* 
+*
 * http://aws.amazon.com/apache2.0/
-* 
+*
 * or in the "license" file accompanying this file. This file is
 * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 * KIND, either express or implied. See the License for the specific
@@ -36,21 +36,21 @@ using System.Collections.Generic;
 public partial class _Default : System.Web.UI.Page
 {
 
-    public string PhotoGalleryBaseUrl = "http://your-non-dotted-bucket-name.s3.amazonaws.com/";
+    public string PhotoGalleryBaseUrl = "http://d35bp4qczhwrz5.cloudfront.net/";
     public string WebsiteRootPhysicalDir = null;
     public string UploadPhysicalPath = null;
     public string GalleryPhysicalPath = null;
     private string FileThumbName = "";
     private RefreshCatcher refreshCatcher = null;
 
-    private const string ImageBucketName = "your-non-dotted-bucket-name";
+    private const string ImageBucketName = "jalwebapp";
     private string PublicKey = "";
     private string SecretKey = "";
 
-    private string dbinstance = "your-database-instance"; /*i.e. mydbinstance.cgwxy4t1e0xb.us-east-1.rds.amazonaws.com */
-    private string userid ="your-database-userid"; /*i.e. awsuser*/
-    private string password ="your-database-password"; /*i.e. mypassword*/
-    private string database ="your-database-name"; /*i.e. mydb*/
+    private string dbinstance = "jal-webapp-mysql.c2d1kjikplih.us-west-2.rds.amazonaws.com"; /*i.e. mydbinstance.cgwxy4t1e0xb.us-east-1.rds.amazonaws.com */
+    private string userid ="zeus"; /*i.e. awsuser*/
+    private string password ="1234qwer"; /*i.e. mypassword*/
+    private string database ="webappdb"; /*i.e. mydb*/
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -90,7 +90,7 @@ public partial class _Default : System.Web.UI.Page
 
                 UploadS3Object(ImageBucketName, UploadFile.FileName);
                 UploadS3Object(ImageBucketName, FileThumbName);
-                
+
                 AddRDSEntry();
                 DeleteLocalFile(UploadPhysicalPath, FileThumbName);
                 DeleteLocalFile(UploadPhysicalPath, UploadFile.FileName);
@@ -133,10 +133,10 @@ public partial class _Default : System.Web.UI.Page
         cnstr += database;
         MySqlConnection cn = new MySqlConnection(cnstr);
         MySqlCommand cmd = new MySqlCommand();
-        
+
         string sSql = "";
         sSql = "CREATE TABLE images (image_file_name TEXT, image_size DOUBLE, image_content_type TEXT, image_thumb_name TEXT) ";
-        
+
         cmd.Connection = cn;
         cmd.CommandText = sSql;
         cmd.Connection.Open();
@@ -162,7 +162,7 @@ public partial class _Default : System.Web.UI.Page
         cnstr += database;
         MySqlConnection cn = new MySqlConnection(cnstr);
         MySqlCommand cmd = new MySqlCommand();
-        
+
         string sSql = "";
         sSql = "INSERT INTO images (image_file_name, image_size, image_content_type, image_thumb_name) ";
         sSql += "VALUES (";
@@ -171,7 +171,7 @@ public partial class _Default : System.Web.UI.Page
         sSql += "'" + UploadFile.PostedFile.ContentType.ToString() + "', ";
         sSql += "'" + FileThumbName + "'";
         sSql += ")";
-        
+
         cmd.Connection = cn;
         cmd.CommandText = sSql;
         cmd.Connection.Open();
@@ -302,7 +302,7 @@ public partial class _Default : System.Web.UI.Page
         putObject.WithFilePath(UploadPhysicalPath + FileNameToUpload);
         s3Client.PutObject(putObject);
     }
-    
+
 
     private DataTable DataTableFromRDS(DataTable dt)
     {
@@ -316,7 +316,7 @@ public partial class _Default : System.Web.UI.Page
         string query = "SELECT * FROM images";
 
         MySqlConnection conn = new MySqlConnection(cnstr);
-    
+
         MySqlDataAdapter dAdapter = new MySqlDataAdapter(query, conn);
         MySqlCommandBuilder cBuilder = new MySqlCommandBuilder(dAdapter);
         dAdapter.Fill(dt);
