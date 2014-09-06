@@ -34,3 +34,5 @@ Remove-Item c:\tmp\*
 New-Website -Name $WebSiteName -ApplicationPool (New-WebAppPool $WebSiteName).Name -PhysicalPath C:\ImageGallery
 </powershell>
 ```
+
+Load sdk `$assembly = [Reflection.Assembly]::LoadFile('C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.dll')`
