@@ -1,14 +1,14 @@
 ﻿/*  Aubergine Machine WordPress stylesheet
-    Copyright 2003-2004 Ben de Groot     
+    Copyright 2003-2004 Ben de Groot
     released under the GPL
 	See http://alexking.org/blog/2004/02/09/wordpress-css-style-competition-winners/
-	for more info                  
+	for more info
 */
 
 
 html, body
 {
-	background: #ffcc66;
+	background: #0099cc;
 	top: 0;
 	left: 0;
 	margin: 0;
@@ -187,15 +187,15 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 	width: 40%;
 	margin: 0 0 0 50%;
 	}
-	
-table 
+
+table
 {
 	background: #FFFFFF;
 	vertical-align: top;
 	text-align: center;
 	border: 1px solid black;
 }
-	
+
 td {
 	text-align: center;
 	font-weight: normal;
@@ -207,7 +207,7 @@ td {
 thead {
 	font-weight: bold;
 	}
-	
+
 ul {
 	list-style: square;
 	}
@@ -217,7 +217,7 @@ blockquote, pre, var {
 	font-family: 'Andale Mono', monospace;
 	}
 
-select 
+select
 {
 	width: 380px ;
 }
@@ -247,8 +247,8 @@ textarea {
 	margin: 0;
 	padding: 0;
 	}
-	
-.subfolders, .buckets 
+
+.subfolders, .buckets
 {
 	border-style: dotted;
 	vertical-align: bottom;
@@ -257,7 +257,7 @@ textarea {
 div.float {
   float: left;
   }
-  
+
 div.float p {
    text-align: center;
    }
