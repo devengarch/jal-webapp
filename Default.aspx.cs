@@ -83,16 +83,9 @@ public partial class _Default : System.Web.UI.Page
 
     public void DisplayInformation()
     {
-
-            Response.Write("Instance: " + EC2Metadata.InstanceId + "</br>");
-            Response.Write("IP Address: " + EC2Metadata.PrivateIpAddress + "</br>");
-	          Response.Write("Availbility Zone: " + EC2Metadata.AvailabilityZone);
-
-    }
-
-    public void DisplayInformation()
-    {
-        Response.Write("Instance :" + EC2Metadata.InstanceId)
+        Response.Write("Instance: " + EC2Metadata.InstanceId + "</br>");
+        Response.Write("IP Address: " + EC2Metadata.PrivateIpAddress + "</br>");
+        Response.Write("Availbility Zone: " + EC2Metadata.AvailabilityZone);
     }
 
     protected void Button1_Click(object sender, EventArgs e)
