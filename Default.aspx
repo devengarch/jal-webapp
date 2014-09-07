@@ -8,7 +8,7 @@
     <script type="text/javascript" language="javascript">
         function SetRefresh()
         {
-        // Because this code is only fired on the client via 
+        // Because this code is only fired on the client via
         // the Submit button, page refreshes (F5) won't call it
         var o = document.getElementById('__REFRESHSTAMP');
         var i = Number(o.value);
@@ -24,6 +24,9 @@
     <form id="form1" enctype="multipart/form-data" onsubmit="javascript:SetRefresh();" runat="server">
     <div>
         <h1>Photo Gallery</h1>
+            <p>
+                <% DisplayInformation();  %>
+            </p>
             <%        DisplayRecords(); %>
         <div class="spacer">
           &nbsp;
@@ -38,7 +41,7 @@
             <font color="red">
                 <asp:Label ID="Message" runat="server"></asp:Label></font>
         </p>
-        
+
     </div>
     </form>
 </body>

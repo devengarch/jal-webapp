@@ -27,6 +27,8 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Collections;
+using Amazon;
+using Amazon.EC2.Util;
 using Amazon.S3;
 using Amazon.S3.Model;
 using MySql.Data.MySqlClient;
@@ -77,6 +79,20 @@ public partial class _Default : System.Web.UI.Page
             Response.Write("Image Size: " + dt.Rows[i]["image_size"].ToString() + "<br />\n");
             Response.Write("</div>\n");
         }
+    }
+
+    public void DisplayInformation()
+    {
+
+            Response.Write("Instance: " + EC2Metadata.InstanceId + "</br>");
+            Response.Write("IP Address: " + EC2Metadata.PrivateIpAddress + "</br>");
+	          Response.Write("Availbility Zone: " + EC2Metadata.AvailabilityZone);
+
+    }
+
+    public void DisplayInformation()
+    {
+        Response.Write("Instance :" + EC2Metadata.InstanceId)
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -295,18 +311,23 @@ public partial class _Default : System.Web.UI.Page
 
     void UploadS3Object(string bucket, string FileNameToUpload)
     {
-        AmazonS3 s3Client = Amazon.AWSClientFactory.CreateAmazonS3Client(PublicKey, SecretKey);
+
+	      Amazon.S3.IAmazonS3 s3Client = Amazon.AWSClientFactory.CreateAmazonS3Client(new AmazonS3Config
+    		{
+        		ServiceURL = "http://s3.amazonaws.com"
+    		}
+
+      	);
         PutObjectRequest putObject = new PutObjectRequest();
-        putObject.WithBucketName(bucket);
-        putObject.WithCannedACL(S3CannedACL.PublicRead);
-        putObject.WithFilePath(UploadPhysicalPath + FileNameToUpload);
+        putObject.BucketName=(bucket);
+        putObject.CannedACL=(S3CannedACL.PublicRead);
+        putObject.FilePath=(UploadPhysicalPath + FileNameToUpload);
         s3Client.PutObject(putObject);
     }
 
-
     private DataTable DataTableFromRDS(DataTable dt)
     {
-	string cnstr = "server=";
+	      string cnstr = "server=";
         cnstr += dbinstance + ";User Id=";
         cnstr += userid + ";password=";
         cnstr += password + ";database=";
