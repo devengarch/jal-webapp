@@ -21,7 +21,7 @@ $zip_file = $shell_app.namespace("c:\tmp\jal-webapp-master.zip")
 $destination = $shell_app.namespace("c:\tmp\")
 $destination.Copyhere($zip_file.items())
 if(Test-Path c:\ImageGallery){Remove-Item C:\ImageGallery\* -Recurse -Force}
-Move-Item C:\tmp\jal-webapp-master\ C:\ImageGallery\
+Move-Item C:\tmp\jal-webapp-master\ C:\ImageGallery
 Remove-Item c:\tmp\*
 
 # Create new web site using C:\ImageGallery as the root
