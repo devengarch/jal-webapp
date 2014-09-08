@@ -24,6 +24,7 @@
     <form id="form1" enctype="multipart/form-data" onsubmit="javascript:SetRefresh();" runat="server">
     <div>
         <h1>Photo Gallery</h1>
+        <h4>Instance Information</h4>
             <p>
                 <% DisplayInformation();  %>
             </p>
