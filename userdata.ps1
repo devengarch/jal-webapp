@@ -41,4 +41,7 @@ Remove-Item c:\tmp\*
 
 # Create new web site using C:\ImageGallery as the root
 New-Website -Name $WebSiteName -ApplicationPool (New-WebAppPool $WebSiteName).Name -PhysicalPath C:\ImageGallery
+
+# Restart Computer
+Restart-Computer
 </powershell>
