@@ -2,6 +2,9 @@
 # userdata.ps1
 # Userdata script to bootstrap webapp demo servers.  Requires 2012R2 base OS instance
 
+# Set Execution Policy
+Set-ExecutionPolicy Remotesigned -Force
+
 # Install IIS
 Install-WindowsFeature as-web-support -IncludeManagementTools
 
