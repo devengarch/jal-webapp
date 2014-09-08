@@ -14,6 +14,7 @@
 *******************************************************************************/
 
 using System;
+using System.Net;
 using System.Data;
 using System.Configuration;
 using System.Web;
@@ -84,6 +85,7 @@ public partial class _Default : System.Web.UI.Page
     public void DisplayInformation()
     {
         Response.Write("Instance: " + EC2Metadata.InstanceId + "</br>");
+        Response.Write("Hostname: " + System.Net.Dns.GetHostEntry("").HostName + "</br>");
         Response.Write("IP Address: " + EC2Metadata.PrivateIpAddress + "</br>");
         Response.Write("Availbility Zone: " + EC2Metadata.AvailabilityZone);
     }
