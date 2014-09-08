@@ -43,5 +43,5 @@ Remove-Item c:\tmp\*
 New-Website -Name $WebSiteName -ApplicationPool (New-WebAppPool $WebSiteName).Name -PhysicalPath C:\ImageGallery
 
 # Restart Computer
-Restart-Computer
+Restart-Computer -Force
 </powershell>
