@@ -10,7 +10,7 @@ $password = "@345Wert" | ConvertTo-SecureString -asPlainText -Force
 $username = "aws-autoscale-join"
 $credential = New-Object System.Management.Automation.PSCredential($username,$password)
 Add-Type -Path 'C:\Program Files (x86)\AWS SDK for .NET\bin\Net45\AWSSDK.dll'
-$computername = ([Amazon.EC2.Util.EC2Metadata]::LocalHostname).split(".")[0]
+$computername = [Amazon.EC2.Util.EC2Metadata]::InstanceId
 Add-Computer -domainname tapoc.local -OUPath "OU=AWS-AutoScale,OU=Servers,DC=tapoc,DC=local" -Credential $credential -NewName $computername -passthru
 
 # Install IIS
