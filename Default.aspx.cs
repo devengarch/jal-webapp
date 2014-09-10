@@ -87,7 +87,8 @@ public partial class _Default : System.Web.UI.Page
         Response.Write("Instance: " + EC2Metadata.InstanceId + "</br>");
         Response.Write("Hostname: " + System.Net.Dns.GetHostEntry("").HostName + "</br>");
         Response.Write("IP Address: " + EC2Metadata.PrivateIpAddress + "</br>");
-        Response.Write("Availbility Zone: " + EC2Metadata.AvailabilityZone);
+        Response.Write("Availbility Zone: " + EC2Metadata.AvailabilityZone + "</br>");
+	Response.Write("RDS Endpoint: " + dbinstance + "</br>");
     }
 
     protected void Button1_Click(object sender, EventArgs e)
