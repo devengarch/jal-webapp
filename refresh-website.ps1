@@ -5,7 +5,7 @@
 Import-Module AWSPowerShell
 New-Item -Type Directory 'c:\tmp'
 New-Item -Type Directory 'c:\ImageGallery'
-Read-S3Object -BucketName jalwebapp -Key 'code-dr/jal-webapp-master.zip' -File 'c:\tmp\jal-webapp-master.zip'
+Read-S3Object -BucketName jalwebapp -Key 'code/jal-webapp-master.zip' -File 'c:\tmp\jal-webapp-master.zip'
 
 # Cleanup IIS of existing default and webapp web sites
 Import-Module WebAdministration
