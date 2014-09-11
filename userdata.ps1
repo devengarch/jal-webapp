@@ -39,6 +39,28 @@ if(Test-Path c:\ImageGallery){Remove-Item C:\ImageGallery\* -Recurse -Force}
 Move-Item C:\tmp\jal-webapp-master\* C:\ImageGallery\
 Remove-Item c:\tmp\*
 
+# Set RDS Endpoint based on EC2MetaData
+$EC2InstancIdDocument = (curl http://169.254.169.254/latest/dynamic/instance-identity/document/).content | ConvertFrom-Json
+$EC2InstanceId = $EC2InstancIdDocument.instanceId
+$EC2InstanceRegion = $EC2InstancIdDocument.region
+Get-EC2Tag -Region $EC2InstanceRegion -Filter @(
+    @{name="resource-id";value=$EC2InstanceId},
+    @{name="key";value="Name"}
+)
+
+if($EC2MetaData::AvailabilityZone -like "us-east-1*"){
+    $rdsendpoint = "jal-webapp-mysql.c48rqdxv8f9j.us-east-1.rds.amazonaws.com"
+}
+
+if($EC2MetaData::AvailabilityZone -like "us-west-2*"){
+    $rdsendpoint = "jal-webapp-mysql.c2d1kjikplih.us-west-2.rds.amazonaws.com"
+}
+
+$PathToFile = "C:\ImageGallery\Default.aspx.cs"
+$SearchFor = "private string dbinstance.+"
+$ReplaceWith = "private string dbinstance = `"" + $rdsendpoint + "`";"
+(get-content $PathtoFile) | % { $_ -replace $SearchFor, $ReplaceWith } | set-content $PathToFile
+
 # Create new web site using C:\ImageGallery as the root
 New-Website -Name $WebSiteName -ApplicationPool (New-WebAppPool $WebSiteName).Name -PhysicalPath C:\ImageGallery
 
