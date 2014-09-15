@@ -49,11 +49,11 @@ Get-EC2Tag -Region $EC2InstanceRegion -Filter @(
 )
 
 if($EC2InstanceRegion -eq "us-east-1"){
-    $rdsendpoint = "jal-webapp-mysql.c48rqdxv8f9j.us-east-1.rds.amazonaws.com"
+    $rdsendpoint = "photogallery.us-east-1.rds.tapoc.local"
 }
 
 if($EC2InstanceRegion -eq "us-west-2"){
-    $rdsendpoint = "jal-webapp-mysql.c2d1kjikplih.us-west-2.rds.amazonaws.com"
+    $rdsendpoint = "photogallery.us-west-2.rds.tapoc.local"
 }
 
 $PathToFile = "C:\ImageGallery\Default.aspx.cs"
