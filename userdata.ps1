@@ -48,11 +48,11 @@ Get-EC2Tag -Region $EC2InstanceRegion -Filter @(
     @{name="key";value="Name"}
 )
 
-if($EC2MetaData::AvailabilityZone -like "us-east-1*"){
+if($EC2InstanceRegion -eq "us-east-1"){
     $rdsendpoint = "jal-webapp-mysql.c48rqdxv8f9j.us-east-1.rds.amazonaws.com"
 }
 
-if($EC2MetaData::AvailabilityZone -like "us-west-2*"){
+if($EC2InstanceRegion -eq "us-west-2"){
     $rdsendpoint = "jal-webapp-mysql.c2d1kjikplih.us-west-2.rds.amazonaws.com"
 }
 
