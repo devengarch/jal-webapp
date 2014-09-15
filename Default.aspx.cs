@@ -50,7 +50,7 @@ public partial class _Default : System.Web.UI.Page
     private string PublicKey = "";
     private string SecretKey = "";
 
-    private string dbinstance = "jal-webapp-mysql.c2d1kjikplih.us-west-2.rds.amazonaws.com"; /*i.e. mydbinstance.cgwxy4t1e0xb.us-east-1.rds.amazonaws.com */
+    private string dbinstance = "fqdn.of.rds.endpoint"; /*i.e. mydbinstance.cgwxy4t1e0xb.us-east-1.rds.amazonaws.com */
     private string userid ="zeus"; /*i.e. awsuser*/
     private string password ="1234qwer"; /*i.e. mypassword*/
     private string database ="webappdb"; /*i.e. mydb*/
